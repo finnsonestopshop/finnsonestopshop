@@ -7,36 +7,36 @@
 <title>Finn's One Stop Shop</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="img/logo.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: sticky shop header, a short hero, then one band per department with item cards, then shipping/returns, about, contact. */
 :root{
-  --bg:#f6f7f5; --surface:#ffffff; --ink:#1c2321; --muted:#5b6662; --line:#dfe3e0;
-  --accent:#c4561b; --accent-ink:#ffffff; --deep:#22332c; --deep-ink:#eef2ef; --tag:#e9eeeb;
+  /* Brand: black, royal blue, chrome white, matching the eBay store logo */
+  --bg:#07090f; --surface:#10141f; --ink:#eef1f7; --muted:#9aa3b8; --line:#1e2638;
+  --accent:#2f5bff; --accent-ink:#ffffff; --deep:#000000; --deep-ink:#f4f6fb; --tag:#18203a;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#121715; --surface:#1a211e; --ink:#e7ece9; --muted:#9aa6a1; --line:#2c3531;
-  --accent:#e8743a; --accent-ink:#1a0d05; --deep:#0c110f; --deep-ink:#e7ece9; --tag:#232c28; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#121715; --surface:#1a211e; --ink:#e7ece9; --muted:#9aa6a1; --line:#2c3531;
-  --accent:#e8743a; --accent-ink:#1a0d05; --deep:#0c110f; --deep-ink:#e7ece9; --tag:#232c28; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--deep)}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--deep);color:var(--deep-ink)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
-.logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.02em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-style:italic;font-weight:800;font-size:22px;letter-spacing:.02em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none}
+.logo img{width:44px;height:44px;flex:none}
 .logo span{color:var(--accent)}
 nav{display:flex;gap:4px 18px;flex-wrap:wrap}
 nav a{color:var(--deep-ink);text-decoration:none;font-size:14px;font-weight:500;opacity:.85}
 nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:4px}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.hero{background:var(--deep);color:var(--deep-ink);padding-block:40px 48px}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,76px);line-height:.95;margin:0 0 16px;text-transform:uppercase;text-wrap:balance;letter-spacing:.01em}
+.hero{background:var(--deep);color:var(--deep-ink);padding-block:0 40px}
+.banner{display:block;width:100%;max-width:1320px;height:auto;margin:0 auto 32px}
+header{border-bottom:2px solid var(--accent)}
+.hero h1{font-family:var(--display);font-style:italic;font-weight:800;font-size:clamp(40px,8vw,76px);line-height:.95;margin:0 0 16px;text-transform:uppercase;text-wrap:balance;letter-spacing:.01em}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero p{max-width:58ch;margin:0 0 24px;font-size:18px;opacity:.9}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -44,7 +44,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .dept{padding-block:48px;border-bottom:1px solid var(--line)}
 .dept-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px 40px;align-items:end;margin-bottom:24px}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
-h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1;margin:0;text-transform:uppercase;text-wrap:balance}
+h2{font-family:var(--display);font-style:italic;font-weight:800;font-size:clamp(32px,5vw,46px);line-height:1;margin:0;text-transform:uppercase;text-wrap:balance}
 .dept-head p{margin:0;color:var(--muted);max-width:60ch}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
 .item{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -78,7 +78,7 @@ section[id]{scroll-margin-top:72px}
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#top">Finn's <span>One Stop Shop</span></a>
+    <a class="logo" href="#top"><img src="img/logo.png" alt="" width="44" height="44">Finn's <span>One Stop Shop</span></a>
     <nav aria-label="Departments">
       <a href="#golf">Golf</a>
       <a href="#truck-jeep">Truck &amp; Jeep</a>
@@ -91,6 +91,7 @@ section[id]{scroll-margin-top:72px}
 </header>
 
 <section class="hero" id="top">
+  <img class="banner" src="img/banner.jpg" alt="Finn's One Stop Shop: quality items, great prices, fast shipping, free 30 day returns" width="1320" height="594">
   <div class="wrap">
     <h1>Gear for the <em>course</em>, the truck and the garage</h1>
     <p>Finn's One Stop Shop is an online store run by a working golf professional in Ridgecrest, California. We carry practical, no-nonsense gear in four departments and ship every order free from US stock.</p>
