@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Finn's One Stop Shop: golf, truck and Jeep, garage and game room gear. Free US shipping from US stock. Ridgecrest, California.">
+<title>Finn's One Stop Shop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky shop header, a short hero, then one band per department with item cards, then shipping/returns, about, contact. */
+:root{
+  --bg:#f6f7f5; --surface:#ffffff; --ink:#1c2321; --muted:#5b6662; --line:#dfe3e0;
+  --accent:#c4561b; --accent-ink:#ffffff; --deep:#22332c; --deep-ink:#eef2ef; --tag:#e9eeeb;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --surface:#1a211e; --ink:#e7ece9; --muted:#9aa6a1; --line:#2c3531;
+  --accent:#e8743a; --accent-ink:#1a0d05; --deep:#0c110f; --deep-ink:#e7ece9; --tag:#232c28; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --surface:#1a211e; --ink:#e7ece9; --muted:#9aa6a1; --line:#2c3531;
+  --accent:#e8743a; --accent-ink:#1a0d05; --deep:#0c110f; --deep-ink:#e7ece9; --tag:#232c28; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--deep)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--deep);color:var(--deep-ink)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.02em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:4px 18px;flex-wrap:wrap}
+nav a{color:var(--deep-ink);text-decoration:none;font-size:14px;font-weight:500;opacity:.85}
+nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:4px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.hero{background:var(--deep);color:var(--deep-ink);padding-block:40px 48px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,76px);line-height:.95;margin:0 0 16px;text-transform:uppercase;text-wrap:balance;letter-spacing:.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:58ch;margin:0 0 24px;font-size:18px;opacity:.9}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid color-mix(in srgb,var(--deep-ink) 35%,transparent);padding:6px 10px;border-radius:3px}
+.dept{padding-block:48px;border-bottom:1px solid var(--line)}
+.dept-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px 40px;align-items:end;margin-bottom:24px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,5vw,46px);line-height:1;margin:0;text-transform:uppercase;text-wrap:balance}
+.dept-head p{margin:0;color:var(--muted);max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.item h3{margin:0;font-size:16px;font-weight:600}
+.item p{margin:0;font-size:14px;color:var(--muted)}
+.spec{margin-top:auto;padding-top:8px;font-family:var(--mono);font-size:12px;color:var(--ink);background:none}
+.spec b{font-weight:500;background:var(--tag);padding:2px 6px;border-radius:2px}
+.policies{padding-block:48px;border-bottom:1px solid var(--line)}
+.pol-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:24px}
+.pol h3{font-family:var(--display);font-size:22px;font-weight:700;text-transform:uppercase;margin:0 0 6px}
+.pol p{margin:0;color:var(--muted);font-size:15px}
+.about{padding-block:48px;border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px 40px}
+.about p{margin:0 0 12px;max-width:62ch}
+.contact{padding-block:48px 64px}
+.contact-card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:4px;padding:20px;display:grid;gap:10px;max-width:560px}
+.row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px}
+.row span:first-child{color:var(--muted)}
+.row span:last-child{font-family:var(--mono);font-size:14px;user-select:all;overflow-wrap:anywhere}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:12px 18px;border-radius:3px;margin-top:8px;justify-self:start}
+footer{background:var(--deep);color:var(--deep-ink);font-size:13px}
+footer .wrap{padding-block:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:.85}
+@media (max-width:720px){.dept-head,.about-grid{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:72px}
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Finn's <span>One Stop Shop</span></a>
+    <nav aria-label="Departments">
+      <a href="#golf">Golf</a>
+      <a href="#truck-jeep">Truck &amp; Jeep</a>
+      <a href="#garage">Garage &amp; Shop</a>
+      <a href="#game-room">Game Room</a>
+      <a href="#shipping">Shipping</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1>Gear for the <em>course</em>, the truck and the garage</h1>
+    <p>Finn's One Stop Shop is an online store run by a working golf professional in Ridgecrest, California. We carry practical, no-nonsense gear in four departments and ship every order free from US stock.</p>
+    <div class="chips"><span>US stock</span><span>Free US shipping</span><span>30-day returns</span><span>Trusted eBay seller</span></div>
+  </div>
+</section>
+
+<section class="dept" id="golf">
+  <div class="wrap">
+    <div class="dept-head">
+      <div><p class="eyebrow">Department 01</p><h2>Golf</h2></div>
+      <p>Picked by a working golf swing coach who sees what players actually need. Practice aids that actually fix faults, and the small accessories every bag runs out of.</p>
+    </div>
+    <div class="grid">
+      <div class="item"><h3>Alignment sticks</h3><p>Set aim, ball position and swing plane on the range.</p><div class="spec"><b>48 in · 2-pack</b></div></div>
+      <div class="item"><h3>Swing training aids</h3><p>Tempo trainers, impact bags and hinge aids for real practice sessions.</p><div class="spec"><b>Range &amp; home</b></div></div>
+      <div class="item"><h3>Headcovers</h3><p>Driver, fairway, hybrid and putter covers that stay on the club.</p><div class="spec"><b>Driver · 3W · Hybrid</b></div></div>
+      <div class="item"><h3>Grips</h3><p>Standard, midsize and jumbo grips for regripping a full set.</p><div class="spec"><b>Std · Mid · Jumbo</b></div></div>
+      <div class="item"><h3>Ball markers &amp; hat clips</h3><p>Magnetic markers, clips and divot tools, sold individually.</p><div class="spec"><b>Magnetic</b></div></div>
+      <div class="item"><h3>Practice nets &amp; mats</h3><p>Backyard hitting nets and turf mats for year-round reps.</p><div class="spec"><b>7 × 7 ft and up</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dept" id="truck-jeep">
+  <div class="wrap">
+    <div class="dept-head">
+      <div><p class="eyebrow">Department 02</p><h2>Truck &amp; Jeep</h2></div>
+      <p>Aftermarket exterior and interior accessories for full-size trucks and Jeeps. Every fitment part lists the make, model and year range it fits.</p>
+    </div>
+    <div class="grid">
+      <div class="item"><h3>Fender flares</h3><p>Pocket and smooth OEM-style flares for heavy-duty trucks and Wrangler models.</p><div class="spec"><b>Fitment by year</b></div></div>
+      <div class="item"><h3>Towing mirrors</h3><p>Power and manual extendable mirrors for towing.</p><div class="spec"><b>Fitment by year</b></div></div>
+      <div class="item"><h3>Seat cushions &amp; covers</h3><p>Memory foam cushions and covers for long hours behind the wheel.</p><div class="spec"><b>Universal fit</b></div></div>
+      <div class="item"><h3>Console organizers</h3><p>Drop-in trays that tame the center console.</p><div class="spec"><b>Model-specific</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dept" id="garage">
+  <div class="wrap">
+    <div class="dept-head">
+      <div><p class="eyebrow">Department 03</p><h2>Garage &amp; Shop</h2></div>
+      <p>Hand tools and shop equipment for people who do their own work.</p>
+    </div>
+    <div class="grid">
+      <div class="item"><h3>Tire spoons</h3><p>Steel mount and demount irons for changing tires by hand.</p><div class="spec"><b>30 in · 2-pack</b></div></div>
+      <div class="item"><h3>Digital water flow meters</h3><p>Inline meters for irrigation, wells and tank filling.</p><div class="spec"><b>2 in NPT</b></div></div>
+      <div class="item"><h3>Storage &amp; organization</h3><p>Wall racks, bins and organizers for the shop.</p><div class="spec"><b>Wall &amp; bench</b></div></div>
+      <div class="item"><h3>Car care</h3><p>Drain pans, splash pads and detailing supplies.</p><div class="spec"><b>DIY oil changes</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dept" id="game-room">
+  <div class="wrap">
+    <div class="dept-head">
+      <div><p class="eyebrow">Department 04</p><h2>Game Room</h2></div>
+      <p>Table games built to last a lot of game nights.</p>
+    </div>
+    <div class="grid">
+      <div class="item"><h3>American Mahjong sets</h3><p>Complete sets with racks, pushers and dice.</p><div class="spec"><b>166 tiles</b></div></div>
+      <div class="item"><h3>Mahjong mats &amp; racks</h3><p>Table mats and replacement racks with pushers.</p><div class="spec"><b>Mats · Racks</b></div></div>
+      <div class="item"><h3>Chess sets</h3><p>Large wooden sets with folding boards.</p><div class="spec"><b>20 in board</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="policies" id="shipping">
+  <div class="wrap">
+    <p class="eyebrow">Policies</p>
+    <h2>Shipping &amp; returns</h2>
+    <div class="pol-grid">
+      <div class="pol"><h3>Free US shipping</h3><p>Every order ships free within the continental US from US stock, with tracking.</p></div>
+      <div class="pol"><h3>Fast delivery</h3><p>Most orders arrive in 2 to 4 business days.</p></div>
+      <div class="pol"><h3>30-day returns</h3><p>Not right? Return it within 30 days of delivery for a refund.</p></div>
+      <div class="pol"><h3>New items only</h3><p>Everything we sell is new, never refurbished or remanufactured.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div><p class="eyebrow">About</p><h2>Who we are</h2></div>
+    <div>
+      <p>Finn's One Stop Shop is owned and run by David Sappington, a professional golf swing coach based in Ridgecrest, California. The store started on eBay and grew into four departments built around what customers actually buy.</p>
+      <p>We keep the catalog focused, price fairly and answer every message ourselves. We work with US distributors so orders ship quickly from US warehouses.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 style="margin-bottom:20px">Get in touch</h2>
+    <div class="contact-card">
+      <div class="row"><span>Owner</span><span>David Sappington</span></div>
+      <div class="row"><span>Email</span><span>david@finnsonestopshop.com</span></div>
+      <div class="row"><span>Location</span><span>Ridgecrest, CA</span></div>
+      <a class="btn" href="https://www.ebay.com/usr/saptwo" target="_blank" rel="noopener">Shop us on eBay (seller: saptwo)</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Finn's One Stop Shop · Ridgecrest, California</span><span>CA seller's permit on file</span></div></footer>
+
+</body>
+</html>
